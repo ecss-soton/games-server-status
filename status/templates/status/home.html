@@ -6,4 +6,26 @@
 
 {% block content %}
 <h1>ECSS Games Server</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Game</th>
+      <th scope="col">Host</th>
+      <th scope="col">Port</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for game_server in game_servers %}
+    <tr>
+      <th scope="row">{{ game_server.name }}</th>
+      <td>{{ game_server.game }}</td>
+      <td>{{ game_server.host }}</td>
+      <td>{{ game_server.port }}</td>
+      <td>{{ game_server.status }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock %}
