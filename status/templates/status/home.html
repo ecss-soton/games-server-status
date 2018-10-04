@@ -14,6 +14,7 @@
       <th scope="col">Host</th>
       <th scope="col">Port</th>
       <th scope="col">Status</th>
+      <th scope="col">Details</th>
     </tr>
   </thead>
   <tbody>
@@ -24,6 +25,15 @@
       <td>{{ game_server.host }}</td>
       <td>{{ game_server.port }}</td>
       <td>{{ game_server.status }}</td>
+      <td>
+        {% if game_server.details %}
+        <ul class="list-unstyled">
+          {% for key, value in game_server.details.items %}
+          <li><b>{{ key }}</b>: {{ value }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </td>
     </tr>
     {% endfor %}
   </tbody>
