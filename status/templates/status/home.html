@@ -20,7 +20,7 @@
     {% for game_server in game_servers %}
     <tr>
       <th scope="row">{{ game_server.name }}</th>
-      <td><a href="{% url 'status:game' game=game_server.game %}">{{ game_server.game_name }}</a></td>
+      <td><!--<a href="{% url 'status:game' game=game_server.game %}">-->{{ game_server.game_name }}<!--</a>--></td>
       <td>{{ game_server.host }}</td>
       <td>{{ game_server.port }}</td>
       <td>{{ game_server.status }}</td>
