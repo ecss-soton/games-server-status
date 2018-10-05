@@ -2,8 +2,10 @@
 
 {% load static %}
 
-{% block pagestyle %}
+{% block pagehead %}
+{% if refresh %}
 <meta http-equiv="refresh" content="60">
+{% endif %}
 {% endblock %}
 
 {% block title %}Status - ECSS Games Server{% endblock %}

@@ -17,11 +17,12 @@ def home(request):
             server = root[0]
             status = server.attrib['status']
 
-            if game_server['game'] == 'dst':
-                details['Mode'] = server.find('map').text
-            elif game_server['game'] == 'tf2':
-                details['Map'] = server.find('map').text
-                details['Players'] = '{}/{}'.format(server.find('numplayers').text, server.find('maxplayers').text)
+            if status == 'UP':
+                if game_server['game'] == 'dst':
+                    details['Mode'] = server.find('map').text
+                elif game_server['game'] == 'tf2':
+                    details['Map'] = server.find('map').text
+                    details['Players'] = '{}/{}'.format(server.find('numplayers').text, server.find('maxplayers').text)
 
         game_servers.append({
             'name': game_server['name'],
@@ -33,8 +34,13 @@ def home(request):
             'details': details,
         })
 
+    refresh = False
+    if request.GET.get('refresh', None) == '60':
+        refresh = True
+
     context = {
             'game_servers': game_servers,
+            'refresh': refresh,
         }
     return render(request, 'status/home.html', context)
 
